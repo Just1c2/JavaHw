@@ -39,7 +39,5 @@ public class FlashLamp {
     public static void main(String[] args) {
         Battery battery1;
 
-        battery1 = new Battery("100%");
-        battery1.printInfo();
     }
 }
