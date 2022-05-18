@@ -5,7 +5,6 @@ public class FlashLamp {
     private Battery battery;
 
     public FlashLamp() {
-        state = false;
     }
 
     public void setBattery(Battery battery) {
