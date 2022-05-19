@@ -5,11 +5,14 @@ public class Client {
         SwitchButton switchButton = new SwitchButton();
         FlashLamp lamp = new FlashLamp();
         Battery battery = new Battery();
-        for (int i = 0; i < 10; i++) {
+        lamp.setBattery(battery);
+        lamp.turnOn();
+        System.out.println(lamp.getBatteryInfo());
+        /*for (int i = 0; i < 10; i++) {
             switchButton.switchOn();
             battery.decreaseEnergy();
         }
-        System.out.println("phan tram pin con lai " + battery.getEnergy());
+        System.out.println("phan tram pin con lai " + battery.getEnergy());*/
     }
 }
 
