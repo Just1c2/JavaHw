@@ -6,10 +6,10 @@ public class Menu {
         System.out.println("2. In danh sách sản phẩm có giá trên 10.000");
         System.out.println("3. Đếm số sản phẩm có số lượng bán từ 50 trờ lên");
         System.out.println("4. Liệt kê sảm phẩm dựa theo loại sản phẩm");
-        System.out.println("5. sắp xếp các sản phẩm theo số lượng bán được");
+        System.out.println("5. Sắp xếp các sản phẩm theo số lượng bán được");
         System.out.println("6. Đưa ra sản phẩm được bán nhiều nhất");
-        System.out.println("7. sắp xếp sản phẩm theo tên");
-        System.out.println("6. Thoát chương trình");
+        System.out.println("7. Sắp xếp sản phẩm theo tên");
+        System.out.println("8. Thoát chương trình");
         System.out.println("Lựa chọn của bạn là: ");
     }
 

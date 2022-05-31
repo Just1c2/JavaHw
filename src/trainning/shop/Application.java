@@ -9,7 +9,7 @@ public class Application {
         Menu.mainMenu();
         int choose = scanner.nextInt();
         switch (choose) {
-            case 0:
+            case 8:
                 System.exit(0);
                 break;
             case 1:
@@ -22,6 +22,14 @@ public class Application {
                 break;
             case 3:
                 repository.countProductByAmountSale();
+                break;
+            case 4:
+                repository.filterProductByType();
+                System.out.println("Sản phẩm xếp theo loại: ");
+                repository.show();
+                break;
+            case 6:
+                repository.printMaxAmountSale();
                 break;
             case 7:
                 repository.sortProductByName();
