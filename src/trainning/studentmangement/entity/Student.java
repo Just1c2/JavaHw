@@ -18,6 +18,22 @@ public class Student {
         this.mark = mark;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setMark(double mark) {
+        this.mark = mark;
+    }
+
     public void scanInfo() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter ID: ");

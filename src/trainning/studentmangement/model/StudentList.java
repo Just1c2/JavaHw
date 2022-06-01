@@ -5,11 +5,13 @@ import trainning.studentmangement.entity.Student;
 import java.util.*;
 
 public class StudentList {
-    private ArrayList<Student> list;
+    ArrayList<Student> list = new ArrayList<>();
     private int length;
 
     public StudentList() {
-        list = new ArrayList<Student>();
+        list.add(new Student(01, "Hieu", "Vu", 9));
+        list.add(new Student(02, "Huy", "Vu", 8));
+        list.add(new Student(03, "Quan", "Cao", 8));
     }
 
     public ArrayList<Student> findByName(String name) {
@@ -72,5 +74,8 @@ public class StudentList {
             for (Student s: slist) {
                 s.printInfo();
         }
+    }
+    public void sortByName() {
+        list.sort(((o1, o2) -> o1.getFirstName().compareTo(o2.getFirstName())));
     }
 }

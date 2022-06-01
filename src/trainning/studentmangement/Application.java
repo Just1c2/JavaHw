@@ -15,7 +15,8 @@ public class Application {
         System.out.println("3. Search by name");
         System.out.println("4. Search by id");
         System.out.println("5. Print student info in descending order of mark");
-        System.out.println("6. Exit");
+        System.out.println("6. Print student info in order of name");
+        System.out.println("7. Exit");
     }
 
     public static void main(String[] args) {
@@ -48,6 +49,10 @@ public class Application {
                     menu();
                     break;
                 case 6:
+                    printSortedByName();
+                    menu();
+                    break;
+                case 7:
                     System.exit(0);
             }
         }
@@ -96,6 +101,10 @@ public class Application {
 
     public static void printSorted() {
         list.sortByMarks();
+        list.showList();
+    }
+    public static void printSortedByName() {
+        list.sortByName();
         list.showList();
     }
 }
