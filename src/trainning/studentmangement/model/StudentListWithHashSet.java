@@ -4,11 +4,11 @@ import trainning.studentmangement.entity.Student;
 
 import java.util.*;
 
-public class StudentList {
-    ArrayList<Student> list = new ArrayList<>();
+public class StudentListWithHashSet {
+    HashSet<Student> list = new HashSet<>();
     private int length;
 
-    public StudentList() {
+    public StudentListWithHashSet() {
         list.add(new Student(1, "Hieu", "Vu", 9));
         list.add(new Student(2, "Huy", "Vu", 8));
         list.add(new Student(3, "Quan", "Cao", 8));
@@ -75,13 +75,6 @@ public class StudentList {
         }
     }
 
-    public void sortByMarks() {
-        Collections.sort(list, new Comparator<Student>() {
-            @Override
-            public int compare(Student s1, Student s2) {return new Double(s2.getMark()).compareTo(s1.getMark());}
-        });
-    }
-
     public void showList() {
         for (Student s: list) {
             s.printInfo();
@@ -89,11 +82,8 @@ public class StudentList {
     }
 
     public void showList(ArrayList<Student> slist) {
-            for (Student s: slist) {
-                s.printInfo();
+        for (Student s: slist) {
+            s.printInfo();
         }
-    }
-    public void sortByName() {
-        list.sort(((o1, o2) -> o1.getFirstName().compareTo(o2.getFirstName())));
     }
 }

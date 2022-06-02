@@ -4,11 +4,11 @@ import trainning.studentmangement.entity.Student;
 
 import java.util.*;
 
-public class StudentList {
-    ArrayList<Student> list = new ArrayList<>();
+public class StudentListWithLinkedList {
+    LinkedList<Student> list = new LinkedList<>();
     private int length;
 
-    public StudentList() {
+    public StudentListWithLinkedList() {
         list.add(new Student(1, "Hieu", "Vu", 9));
         list.add(new Student(2, "Huy", "Vu", 8));
         list.add(new Student(3, "Quan", "Cao", 8));
@@ -89,8 +89,8 @@ public class StudentList {
     }
 
     public void showList(ArrayList<Student> slist) {
-            for (Student s: slist) {
-                s.printInfo();
+        for (Student s: slist) {
+            s.printInfo();
         }
     }
     public void sortByName() {

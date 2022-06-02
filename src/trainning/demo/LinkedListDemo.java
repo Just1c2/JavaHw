@@ -1,4 +1,4 @@
-package trainning.linkedlist;
+package trainning.demo;
 
 import java.util.*;
 
