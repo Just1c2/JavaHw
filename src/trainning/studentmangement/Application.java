@@ -67,7 +67,7 @@ public class Application {
         id = input.nextInt();
         System.out.println("Enter first name: ");
         fn = input.next();
-        System.out.println("Enter las name: ");
+        System.out.println("Enter last name: ");
         ln = input.next();
         System.out.println("Enter mark: ");
         mark = input.nextDouble();
