@@ -1,11 +1,20 @@
 package trainning.studentmangement.model;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import trainning.filedemo.Customer;
 import trainning.studentmangement.entity.Student;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class StudentList {
-    ArrayList<Student> list = new ArrayList<>();
+    static ArrayList<Student> list = new ArrayList<>();
     private int length;
 
     public StudentList() {
@@ -32,7 +41,25 @@ public class StudentList {
 
     }
 
-    public ArrayList<Student> findByName(String name) {
+    public static void writeStudent() throws IOException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        Writer writer = Files.newBufferedWriter(Paths.get("StudentList.json"));
+
+        gson.toJson(list, writer);
+
+        writer.close();
+    }
+
+    public static void readStudent() throws IOException {
+        Gson gson = new Gson();
+        FileReader reader = new FileReader("StudentList.json");
+        list = gson.fromJson(reader, new TypeToken<List<Student>>(){}.getType());
+
+        reader.close();
+    }
+    public ArrayList<Student> findByName(String name) throws IOException {
+        readStudent();
         boolean found = false;
         ArrayList<Student> matches = new ArrayList<>();
         for (Student s: list) {
@@ -47,7 +74,11 @@ public class StudentList {
         }
         return matches;
     }
-    public Student findById(int id) {
+    public Student findById(int id) throws IOException {
+        readStudent();
+        Gson gson = new Gson();
+        FileReader reader = new FileReader("StudentList.json");
+        list = new Gson().fromJson(reader, new TypeToken<List<Student>>(){}.getType());
         for (Student s: list) {
             if (s.getId() == id) {
                 return s;
@@ -58,7 +89,8 @@ public class StudentList {
 
     public void add(Student s) {list.add(s);}
 
-    public void remove(int id) {
+    public void remove(int id) throws IOException {
+        readStudent();
         boolean found = false;
         for (Student s: list) {
             if (s.getId() == id) {
@@ -75,7 +107,8 @@ public class StudentList {
         }
     }
 
-    public void sortByMarks() {
+    public void sortByMarks() throws IOException {
+        readStudent();
         Collections.sort(list, new Comparator<Student>() {
             @Override
             public int compare(Student s1, Student s2) {return new Double(s2.getMark()).compareTo(s1.getMark());}
@@ -93,7 +126,8 @@ public class StudentList {
                 s.printInfo();
         }
     }
-    public void sortByName() {
+    public void sortByName() throws IOException {
+        readStudent();
         list.sort(((o1, o2) -> o1.getFirstName().compareTo(o2.getFirstName())));
     }
 }

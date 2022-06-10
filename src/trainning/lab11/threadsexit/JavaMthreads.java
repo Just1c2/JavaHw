@@ -21,7 +21,7 @@ public class JavaMthreads extends Thread {
             } catch (Exception e) {}
         }
         System.out.println(pos + " exiting");
-        System.out.println("Main thread exiting");
+
     }
 
 }

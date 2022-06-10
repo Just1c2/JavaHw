@@ -3,6 +3,7 @@ package trainning.studentmangement;
 import trainning.studentmangement.model.StudentList;
 import trainning.studentmangement.entity.Student;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Application {
@@ -19,7 +20,7 @@ public class Application {
         System.out.println("7. Exit");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ConcurrentModificationException {
         list = new StudentList();
         menu();
 
@@ -35,6 +36,7 @@ public class Application {
                 case 2:
                     deleteStudent();
                     menu();
+                    StudentList.writeStudent();
                     break;
                 case 3:
                     searchByName();
@@ -58,7 +60,7 @@ public class Application {
         }
     }
 
-    public static void addStudent() {
+    public static void addStudent() throws IOException {
         int id = 0;
         String fn;
         String ln;
@@ -73,15 +75,16 @@ public class Application {
         mark = input.nextDouble();
         Student s = new Student(id, fn, ln, mark);
         list.add(s);
+        StudentList.writeStudent();
     }
 
-    public static void deleteStudent() {
+    public static void deleteStudent() throws IOException {
         int id;
         System.out.println("Enter student id: ");
         id = input.nextInt();
         list.remove(id);
     }
-    public static void searchByName() {
+    public static void searchByName() throws IOException {
         String name;
         System.out.println("Enter a name: ");
         name = input.next();
@@ -89,7 +92,7 @@ public class Application {
         list.showList(found);
     }
 
-    public static void searchById() {
+    public static void searchById() throws IOException {
         int id;
         System.out.println("Enter an ID: ");
         id = input.nextInt();
@@ -99,11 +102,11 @@ public class Application {
         } else {s.printInfo();}
     }
 
-    public static void printSorted() {
+    public static void printSorted() throws IOException {
         list.sortByMarks();
         list.showList();
     }
-    public static void printSortedByName() {
+    public static void printSortedByName() throws IOException {
         list.sortByName();
         list.showList();
     }
