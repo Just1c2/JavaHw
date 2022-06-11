@@ -76,9 +76,6 @@ public class StudentList {
     }
     public Student findById(int id) throws IOException {
         readStudent();
-        Gson gson = new Gson();
-        FileReader reader = new FileReader("StudentList.json");
-        list = new Gson().fromJson(reader, new TypeToken<List<Student>>(){}.getType());
         for (Student s: list) {
             if (s.getId() == id) {
                 return s;
