@@ -2,16 +2,16 @@ package trainning.studentmangement.entity;
 
 import java.util.Scanner;
 
-public class Student {
+public class Student1 {
     private int id;
     private String firstName;
     private String lastName;
     private double mark;
 
-    public Student() {
+    public Student1() {
     }
 
-    public Student(int id, String firstName, String lastName, double mark) {
+    public Student1(int id, String firstName, String lastName, double mark) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

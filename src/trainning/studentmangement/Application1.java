@@ -1,14 +1,14 @@
 package trainning.studentmangement;
 
-import trainning.studentmangement.model.StudentList;
-import trainning.studentmangement.entity.Student;
+import trainning.studentmangement.model.StudentList1;
+import trainning.studentmangement.entity.Student1;
 
 import java.io.IOException;
 import java.util.*;
 
-public class Application {
+public class Application1 {
     private static Scanner input = new Scanner(System.in);
-    private static StudentList list;
+    private static StudentList1 list;
 
     public static void menu() {
         System.out.println("1. Add a new student to the list");
@@ -21,7 +21,7 @@ public class Application {
     }
 
     public static void main(String[] args) throws IOException, ConcurrentModificationException {
-        list = new StudentList();
+        list = new StudentList1();
         menu();
 
         while (true) {
@@ -36,7 +36,7 @@ public class Application {
                 case 2:
                     deleteStudent();
                     menu();
-                    StudentList.writeStudent();
+                    StudentList1.writeStudent();
                     break;
                 case 3:
                     searchByName();
@@ -73,9 +73,9 @@ public class Application {
         ln = input.next();
         System.out.println("Enter mark: ");
         mark = input.nextDouble();
-        Student s = new Student(id, fn, ln, mark);
+        Student1 s = new Student1(id, fn, ln, mark);
         list.add(s);
-        StudentList.writeStudent();
+        StudentList1.writeStudent();
     }
 
     public static void deleteStudent() throws IOException {
@@ -88,7 +88,7 @@ public class Application {
         String name;
         System.out.println("Enter a name: ");
         name = input.next();
-        ArrayList<Student> found = list.findByName(name);
+        ArrayList<Student1> found = list.findByName(name);
         list.showList(found);
     }
 
@@ -96,7 +96,7 @@ public class Application {
         int id;
         System.out.println("Enter an ID: ");
         id = input.nextInt();
-        Student s = list.findById(id);
+        Student1 s = list.findById(id);
         if (s == null) {
             System.out.println("Not found");
         } else {s.printInfo();}

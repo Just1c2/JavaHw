@@ -2,8 +2,6 @@ package trainning.banksystem;
 
 import java.util.Scanner;
 
-import static trainning.studentmangement.Application.menu;
-
 public class Application {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
