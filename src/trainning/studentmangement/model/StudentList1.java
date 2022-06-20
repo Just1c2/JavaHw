@@ -68,7 +68,7 @@ public class StudentList1 {
                 found = true;
             }
         }
-        if (found = false) {
+        if (found == false) {
             System.out.println("Not found");
         }
         return matches;
