@@ -1,4 +1,4 @@
-package mqltest;
+package connection;
 
 public class PostgreSqlConnection {
 

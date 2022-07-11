@@ -1,17 +1,12 @@
 package grassignment;
 
-import grassignment.entity.Product;
 import grassignment.model.ProductList;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import static grassignment.model.ProductList.*;
-import static mqltest.ConnectionExample.deleteProduct;
+import static connection.ConnectionExample.deleteProduct;
 
 public class ProductApplication {
     private static Scanner input = new Scanner(System.in);

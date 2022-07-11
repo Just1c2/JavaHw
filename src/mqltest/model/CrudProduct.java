@@ -11,16 +11,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static connection.SqlSv.getCon;
-
 public class CrudProduct implements DaoProduct {
-    Connection conn = SqlSv.getCon();
+    static Connection conn;
+
+    static {
+        try {
+            conn = SqlSv.getCon();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     private static final String SQL_SELECT = "select * from product";
     private static final String SQL_SELECT_ONE = "select * from product where id = ?";
     private static final String SQL_INSERT = "insert into product values(?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "update product set name = ?, price = ?, quantity = ?, description = ?" + "where id = ?";
+    private static final String SQL_UPDATE = "update product set name = ?, price = ?, quantity = ?, description = ? where id = ?";
     private static final String SQL_DELETE = "delete from product where id = ?";
 
 
@@ -48,12 +54,34 @@ public class CrudProduct implements DaoProduct {
 
     @Override
     public int update(Product product) throws SQLException {
-        return 0;
+        if (product.getName() == null) {
+            return 0;
+        }
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        int result = 0;
+        preparedStatement = conn.prepareStatement(SQL_UPDATE);
+        preparedStatement.setString(1, product.getName());
+        preparedStatement.setDouble(2, product.getPrice());
+        preparedStatement.setInt(3, product.getQuantity());
+        preparedStatement.setString(4, product.getDescription());
+        preparedStatement.setInt(5, product.getId());
+        result = preparedStatement.executeUpdate();
+
+        return result;
     }
 
     @Override
-    public int delete(Product product) throws SQLException {
-        return 0;
+    public int delete(int id) throws SQLException {
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        int result = 0;
+        preparedStatement = conn.prepareStatement(SQL_DELETE);
+        preparedStatement.setInt(1, id);
+        preparedStatement.executeUpdate();
+
+        return result;
     }
 
     @Override
@@ -61,19 +89,21 @@ public class CrudProduct implements DaoProduct {
         PreparedStatement preparedStatement = null;
 
         ResultSet resultSet = null;
-        List<Product> product = new ArrayList<>();
+        Product product = null;
 
         preparedStatement = conn.prepareStatement(SQL_SELECT_ONE);
         resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            product.add(new Product(
-                    resultSet.getInt("id"),
-                    resultSet.getString("name"),
-                    resultSet.getDouble("price"),
-                    resultSet.getInt("quantity"),
-                    resultSet.getString("description")));
+
+                    int id1 = resultSet.getInt("id");
+                    String name = resultSet.getString("name");
+                    double price = resultSet.getDouble("price");
+                    int quantity = resultSet.getInt("quantity");
+                    String description = resultSet.getString("description");
+            System.out.println("Id :" + id1 + " Name: " + name + " Price: " + price + " Quantity: " + quantity + " Desc: " + description);
+
         }
-        return (Product) product;
+        return product;
     }
 
     @Override
@@ -86,12 +116,12 @@ public class CrudProduct implements DaoProduct {
         preparedStatement = conn.prepareStatement(SQL_SELECT);
         resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            products.add(new Product(
-                    resultSet.getInt("id"),
-                    resultSet.getString("name"),
-                    resultSet.getDouble("price"),
-                    resultSet.getInt("quantity"),
-                    resultSet.getString("description")));
+            int id1 = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            double price = resultSet.getDouble("price");
+            int quantity = resultSet.getInt("quantity");
+            String description = resultSet.getString("description");
+            System.out.println("Id :" + id1 + " Name: " + name + " Price: " + price + " Quantity: " + quantity + " Desc: " + description);
         }
         return products;
     }
